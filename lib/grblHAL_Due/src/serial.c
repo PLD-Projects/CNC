@@ -399,7 +399,7 @@ static uint16_t serial2TxCount (void)
 {
     uint16_t tail = tx2buf.tail;
 
-    return BUFCOUNT(tx2buf.head, tail, TX_BUFFER_SIZE) + (SERIAL2_PERIPH->US_CSR & US_CSR_TXEMPTY) ? 0 : 1;
+    return BUFCOUNT(tx2buf.head, tail, TX_BUFFER_SIZE) + !(SERIAL2_PERIPH->US_CSR & US_CSR_TXEMPTY);
 }
 
 //
